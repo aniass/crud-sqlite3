@@ -2,8 +2,11 @@ import sqlite3
 from sqlite3 import Error
 
 
-# creating connection
 def sql_connection():
+    """ Create a connection with SQLite database specified
+        by the mytest.db file
+    :param con: the connection object
+    :return: connection object or Error"""
     try:
         db = sqlite3.connect('mytest.db')
         return db
@@ -11,8 +14,11 @@ def sql_connection():
         print(Error)
 
 
-# create table employees
 def create_table(con):
+    """ Create the table with given columns
+    :param con: the connection object
+    :return:
+    """
     try:
         cur = con.cursor()
         cur.execute('''CREATE TABLE employees(
@@ -29,8 +35,11 @@ def create_table(con):
         print(Error)
 
 
-# insert data to table
 def insert_data(con, entities):
+    """  Insert records into the table
+    :param entities:
+    :return:
+    """
     query = """INSERT INTO employees (id, name, surname, department, position,
             salary, date) VALUES(?,?,?,?,?,?,?)"""
 
@@ -44,6 +53,7 @@ def insert_data(con, entities):
 
 
 def add_data(con):
+    """ The second method to add records into the table"""
     try:
         cur = con.cursor()
         cur.execute("INSERT INTO employees VALUES(2, 'David', 'Anderson', 'IT', 'Dev', 3000, '2020-06-01')")
@@ -55,8 +65,11 @@ def add_data(con):
         print(Error)
 
 
-# read data
 def fetch(con):
+    """Selects all rows from the table to display
+    :param con: the connection object
+    :return:
+    """
     cur = con.cursor()
     cur.execute('SELECT * FROM employees')
     rows = cur.fetchall()
@@ -64,8 +77,8 @@ def fetch(con):
         print(row)
 
 
-# update a record
 def update(con, salary, id):
+    """ Update the table with given new values"""
     try:
         cur = con.cursor()
         cur.execute("UPDATE employees SET salary = ?  WHERE id = ?", (salary, id))
@@ -75,8 +88,9 @@ def update(con, salary, id):
         print(Error)
 
 
-# delate a record
 def delate(con, surname):
+    """ Delete the given record
+    """
     query = "DELETE FROM employees WHERE surname = ?;"
     try:
         cur = con.cursor()
