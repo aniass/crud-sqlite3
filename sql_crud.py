@@ -65,7 +65,7 @@ def add_data(con):
         print(Error)
 
 
-def fetch(con):
+def select_all(con):
     """Selects all rows from the table to display
     :param con: the connection object
     :return:
@@ -77,18 +77,19 @@ def fetch(con):
         print(row)
 
 
-def update(con, salary, id):
+def update_data(con, salary, id):
     """ Update the table with given new values"""
     try:
         cur = con.cursor()
-        cur.execute("UPDATE employees SET salary = ?  WHERE id = ?", (salary, id))
+        cur.execute("UPDATE employees SET salary = ?  WHERE id = ?", (salary,
+                                                                      id))
         con.commit()
         print("The record updated successfully")
     except Error:
         print(Error)
 
 
-def delate(con, surname):
+def delate_record(con, surname):
     """ Delete the given record
     """
     query = "DELETE FROM employees WHERE surname = ?;"
@@ -107,9 +108,9 @@ def main():
     entities = (1, 'Anna', 'Smith', 'IT', 'Dev', 2000, '2020-02-09')
     insert_data(con, entities)
     add_data(con)
-    fetch(con)
-    update(con, 3000, 1)
-    delate(con, "Roger")
+    select_all(con)
+    update_data(con, 3000, 1)
+    delate_record(con, "Roger")
     con.close()
 
 
