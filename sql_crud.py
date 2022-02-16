@@ -16,8 +16,6 @@ def sql_connection():
 
 def create_table(con):
     """ Create the table with given columns
-    :param con: the connection object
-    :return:
     """
     try:
         cur = con.cursor()
@@ -37,8 +35,6 @@ def create_table(con):
 
 def insert_data(con, entities):
     """  Insert records into the table
-    :param entities:
-    :return:
     """
     query = """INSERT INTO employees (id, name, surname, department, position,
             salary, date) VALUES(?,?,?,?,?,?,?)"""
@@ -67,8 +63,6 @@ def add_data(con):
 
 def select_all(con):
     """Selects all rows from the table to display
-    :param con: the connection object
-    :return:
     """
     try:
         cur = con.cursor()
@@ -107,13 +101,13 @@ def delate_record(con, surname):
 
 def main():
     con = sql_connection()
-    #create_table(con)
-    #entities = (1, 'Anna', 'Smith', 'IT', 'Dev', 2000, '2020-02-09')
-    #insert_data(con, entities)
-    #add_data(con)
+    create_table(con)
+    entities = (1, 'Anna', 'Smith', 'IT', 'Dev', 2000, '2020-02-09')
+    insert_data(con, entities)
+    add_data(con)
     select_all(con)
-    #update_data(con, 3000, 1)
-    #delate_record(con, "Roger")
+    update_data(con, 3000, 1)
+    delate_record(con, "Roger")
     con.close()
 
 
