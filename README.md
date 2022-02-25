@@ -9,6 +9,7 @@ Project is created with:
 - Python 3.6
 - libraries: SQLite3.
 
+### Running the project:
 You can run the script in the terminal:
 
     sql_crud.py 
