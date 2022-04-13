@@ -6,7 +6,7 @@ The script allows to make a basic crud operations by using python and SQLite3. T
 ## Technologies
 Project is created with:
 
-- Python 3.6
+- SQL, Python 3.6
 - libraries: SQLite3.
 
 ### Running the project:
