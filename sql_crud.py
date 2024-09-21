@@ -3,7 +3,7 @@ from sqlite3 import Error
 
 
 def sql_connection():
-    """ Create a connection with SQLite database specified
+    """Create a connection with SQLite database specified
         by the mytest.db file
     :param con: the connection object
     :return: connection object or Error"""
@@ -15,8 +15,7 @@ def sql_connection():
 
 
 def create_table(con):
-    """ Create the table with given columns
-    """
+    """Create the table with given columns"""
     try:
         cur = con.cursor()
         cur.execute('''CREATE TABLE employees(
@@ -34,8 +33,7 @@ def create_table(con):
 
 
 def insert_data(con, entities):
-    """  Insert records into the table
-    """
+    """Insert records into the table"""
     query = """INSERT INTO employees (id, name, surname, department, position,
             salary, date) VALUES(?,?,?,?,?,?,?)"""
 
@@ -62,8 +60,7 @@ def add_data(con):
 
 
 def select_all(con):
-    """Selects all rows from the table to display
-    """
+    """Selects all rows from the table to display"""
     try:
         cur = con.cursor()
         cur.execute('SELECT * FROM employees')
@@ -75,7 +72,7 @@ def select_all(con):
 
 
 def update_data(con, salary, id):
-    """ Update the table with given new values"""
+    """Update the table with given new values"""
     try:
         cur = con.cursor()
         cur.execute("UPDATE employees SET salary = ?  WHERE id = ?", (salary,
@@ -86,9 +83,8 @@ def update_data(con, salary, id):
         print(Error)
 
 
-def delate_record(con, surname):
-    """ Delete the given record
-    """
+def delete_record(con, surname):
+    """Delete the given record"""
     query = "DELETE FROM employees WHERE surname = ?;"
     try:
         cur = con.cursor()
@@ -107,7 +103,7 @@ def main():
     add_data(con)
     select_all(con)
     update_data(con, 3000, 1)
-    delate_record(con, "Roger")
+    delete_record(con, "Roger")
     con.close()
 
 
