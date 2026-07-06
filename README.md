@@ -3,7 +3,7 @@
 ## General info
 The project includes a simple script allows to make a basic crud operations using the SQLite module in Python.
 
-The CRUD (create, read, update, delete) operations are fundamental operations in a database. They are very common and the SQLite3 module in Python provides routines for conducting these operations. In this case I have created a python script. First I have created the sample database and then created basic CRUD operations using SQLite3 such as Create, Read, Update, and Delete.
+The CRUD (create, read, update, delete) operations are fundamental operations in a database. They are very common and the SQLite3 module in Python provides routines for conducting these operations. In this case I have created the sample database in SQLite library and then made a basic CRUD operations such as Create, Read, Update and Delete.
 
 ## Project includes:
 - CRUD script - **sql_crud.py**
